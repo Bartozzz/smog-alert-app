@@ -1,0 +1,8 @@
+{
+  "name": "Smog Alert",
+  "displayName": "Smog Alert",
+
+  "expo": {
+    "sdkVersion": "27.0.0"
+  }
+}
