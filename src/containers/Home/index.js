@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Text } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { Button } from 'react-native-elements';
+import { MapView } from 'expo';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -21,9 +22,24 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <SafeAreaView>
-        <Text>Home screen</Text>
-      </SafeAreaView>
+      <MapView
+        style={{ flex: 1 }}
+        initialRegion={{
+          latitude: 37.78825,
+          longitude: -122.4324,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+        }}
+      >
+        <MapView.Marker
+          title="Marker title"
+          description="Marker description"
+          coordinate={{
+            latitude: 37.78825,
+            longitude: -122.4324,
+          }}
+        />
+      </MapView>
     );
   }
 }
