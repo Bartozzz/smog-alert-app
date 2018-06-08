@@ -4,6 +4,8 @@
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![Github Releases](https://img.shields.io/github/downloads/Bartozzz/smog-alert-app/latest/total.svg)](https://github.com/Bartozzz/smog-alert-app/releases)
   <br>
+
+We’ve created this application, because we believe that nobody should be allowed to burn garbage in their houses – that’s dangerous for the environment and everybody’s health. Smog Alert App works on each mobile platform - it is based on [`React Native`](https://facebook.github.io/react-native/), licensed under the *[MIT license](#license)*.
 </div>
 
 >**Note:** This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app). Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
@@ -27,7 +29,7 @@ Smog Alert App was created and developed by [Bartosz Łaniewski](https://github.
 We have prepared multiple commands to help you develop Smog Alert App on your own. You will need a local copy of [Node.js](https://nodejs.org/en/) installed on your machine. First, you need to clone or [download](https://github.com/Bartozzz/smog-alert-app/archive/dev.zip) our repository:
 
 ```bash
-$ git clone --depth=1 https://github.com/Bartozzz/smog-alert-app.git foodie
+$ git clone --depth=1 https://github.com/Bartozzz/smog-alert-app.git smog-alert-app
 ```
 
 …and install dependencies with npm:
