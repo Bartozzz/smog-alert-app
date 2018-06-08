@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Map from '../Map';
 
-class HomeScreen extends React.Component {
+class PollutersScreen extends React.Component {
   render() {
     const { markers } = this.props;
 
@@ -9,4 +9,4 @@ class HomeScreen extends React.Component {
   }
 }
 
-export default HomeScreen;
+export default PollutersScreen;

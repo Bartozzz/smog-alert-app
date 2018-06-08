@@ -1,11 +1,19 @@
 import * as React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { firebaseConnect } from 'react-redux-firebase';
+import { createBottomTabNavigator } from 'react-navigation';
 import { Right, Button, Text } from 'native-base';
-import Home from '../../components/Home';
+
+import PollutersScreen from '../Polluters';
+import AboutScreen from '../About';
+import InfoScreen from '../Info';
+
+const BottomNav = createBottomTabNavigator({
+  Polluters: PollutersScreen,
+  Info: InfoScreen,
+  About: AboutScreen,
+});
 
 class HomeScreen extends React.Component {
+  static router = BottomNav.router;
   static navigationOptions = ({ navigation }) => ({
     title: 'Home',
     headerRight: (
@@ -18,31 +26,8 @@ class HomeScreen extends React.Component {
   });
 
   render() {
-    const markers = [
-      {
-        id: 'marker0',
-        title: 'Marker title',
-        description: 'Marker description',
-        coordinate: {
-          latitude: 37.78825,
-          longitude: -122.4324,
-        },
-      },
-    ];
-
-    return <Home markers={markers} />;
+    return <BottomNav navigation={this.props.navigation} />;
   }
 }
 
-const mapStateToProps = state => ({
-  debug: state.firebase.data.debug,
-});
-
-const mapDispatchToProps = dispatch => ({
-  //…
-});
-
-export default compose(
-  firebaseConnect(['debug']),
-  connect(mapStateToProps, mapDispatchToProps)
-)(HomeScreen);
+export default HomeScreen;
