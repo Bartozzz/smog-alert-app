@@ -1,4 +1,7 @@
 import * as React from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { firebaseConnect } from 'react-redux-firebase';
 import { Image } from 'react-native';
 import { Permissions, ImagePicker, MapView } from 'expo';
 import {
@@ -16,7 +19,7 @@ import {
   View,
 } from 'native-base';
 
-export default class AddScreen extends React.Component {
+class AddScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Add new polluter',
   });
@@ -136,3 +139,16 @@ export default class AddScreen extends React.Component {
     );
   }
 }
+
+const mapStateToProps = (state: State) => ({
+  debug: state.firebase.data.debug,
+});
+
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  //…
+});
+
+export default compose(
+  firebaseConnect(['debug']),
+  connect(mapStateToProps, mapDispatchToProps)
+)(AddScreen);

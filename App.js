@@ -1,7 +1,9 @@
 import * as React from 'react';
+import { Provider } from 'react-redux';
 import { Platform, Image } from 'react-native';
 import { AppLoading, Asset, Font } from 'expo';
 import { createStackNavigator } from 'react-navigation';
+import { configureStore } from './src/store/configureStore';
 
 import HomeScreen from './src/containers/Home';
 import AddScreen from './src/containers/Add';
@@ -10,6 +12,10 @@ import App from './src/containers/App';
 const Routes = createStackNavigator({
   Home: HomeScreen,
   Add: AddScreen,
+});
+
+const store = configureStore({
+  // …
 });
 
 export default class Entry extends React.Component {
@@ -80,9 +86,11 @@ export default class Entry extends React.Component {
     }
 
     return (
-      <App>
-        <Routes />
-      </App>
+      <Provider store={store}>
+        <App>
+          <Routes />
+        </App>
+      </Provider>
     );
   }
 }

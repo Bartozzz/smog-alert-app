@@ -3,7 +3,7 @@ import { SafeAreaView } from 'react-navigation';
 import { Right, Button, Text } from 'native-base';
 import { MapView } from 'expo';
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Home',
     headerRight: (
@@ -38,3 +38,5 @@ export default class HomeScreen extends React.Component {
     );
   }
 }
+
+export default HomeScreen;
