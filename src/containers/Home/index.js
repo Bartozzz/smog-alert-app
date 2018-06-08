@@ -1,22 +1,17 @@
 import * as React from 'react';
-import { Text } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
-import { Button } from 'react-native-elements';
+import { Right, Button, Text } from 'native-base';
 import { MapView } from 'expo';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Home',
     headerRight: (
-      <Button
-        onPress={() => navigation.navigate('Add')}
-        color="#037aff"
-        title="Add"
-        buttonStyle={{
-          backgroundColor: 'transparent',
-          borderColor: 'transparent',
-        }}
-      />
+      <Right>
+        <Button onPress={() => navigation.navigate('Add')} hasText transparent>
+          <Text>Add</Text>
+        </Button>
+      </Right>
     ),
   });
 
