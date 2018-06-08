@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { SafeAreaView } from 'react-navigation';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { firebaseConnect } from 'react-redux-firebase';
 import { Right, Button, Text } from 'native-base';
-import { MapView } from 'expo';
+import Home from '../../components/Home';
 
 class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -16,27 +18,31 @@ class HomeScreen extends React.Component {
   });
 
   render() {
-    return (
-      <MapView
-        style={{ flex: 1 }}
-        initialRegion={{
+    const markers = [
+      {
+        id: 'marker0',
+        title: 'Marker title',
+        description: 'Marker description',
+        coordinate: {
           latitude: 37.78825,
           longitude: -122.4324,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
-        }}
-      >
-        <MapView.Marker
-          title="Marker title"
-          description="Marker description"
-          coordinate={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-          }}
-        />
-      </MapView>
-    );
+        },
+      },
+    ];
+
+    return <Home markers={markers} />;
   }
 }
 
-export default HomeScreen;
+const mapStateToProps = state => ({
+  debug: state.firebase.data.debug,
+});
+
+const mapDispatchToProps = dispatch => ({
+  //…
+});
+
+export default compose(
+  firebaseConnect(['debug']),
+  connect(mapStateToProps, mapDispatchToProps)
+)(HomeScreen);
