@@ -38,7 +38,7 @@ class CameraRoll extends React.Component {
    */
   requestImage = async () => {
     const { status } = await this.requestPermissions();
-    const { children, ...rest } = this.props;
+    const { children, onSelect, ...rest } = this.props;
 
     try {
       const result = await ImagePicker.launchImageLibraryAsync(rest);
@@ -47,6 +47,10 @@ class CameraRoll extends React.Component {
         this.setState({
           image: result.uri,
         });
+
+        if (onSelect) {
+          onSelect(result);
+        }
       }
     } catch (error) {
       Toast.show({
