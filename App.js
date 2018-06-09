@@ -6,7 +6,7 @@ import { createStackNavigator } from 'react-navigation';
 import { configureStore } from './src/store/configureStore';
 
 import HomeScreen from './src/containers/Home';
-import AddScreen from './src/containers/Add';
+import AddScreen from './src/containers/Polluter';
 import App from './src/containers/App';
 
 const Routes = createStackNavigator({

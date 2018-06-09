@@ -3,9 +3,9 @@ import Map from '../Map';
 
 class PollutersScreen extends React.Component {
   render() {
-    const { markers } = this.props;
+    const { markers, center } = this.props;
 
-    return <Map markers={markers} />;
+    return <Map markers={markers} center={center} />;
   }
 }
 

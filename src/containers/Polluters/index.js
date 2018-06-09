@@ -14,6 +14,12 @@ class PollutersScreen extends React.Component {
   });
 
   render() {
+    const { navigation } = this.props;
+
+    // Center param is provided once a new polluter has been added by the user.
+    // It forces map to center on the added polluter (success fallback):
+    const center = navigation.getParam('center');
+
     const markers = [
       {
         id: 'marker0',
@@ -26,19 +32,19 @@ class PollutersScreen extends React.Component {
       },
     ];
 
-    return <Polluters markers={markers} />;
+    return <Polluters markers={markers} center={center} />;
   }
 }
 
 const mapStateToProps = state => ({
-  debug: state.firebase.data.debug,
+  // …
 });
 
 const mapDispatchToProps = dispatch => ({
-  //…
+  // …
 });
 
 export default compose(
-  firebaseConnect(['debug']),
+  firebaseConnect(),
   connect(mapStateToProps, mapDispatchToProps)
 )(PollutersScreen);

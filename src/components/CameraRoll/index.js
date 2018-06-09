@@ -15,7 +15,7 @@ class CameraRoll extends React.Component {
 
   /**
    * We need extra permissions to open camera roll. We can ask for those perms
-   * only one – when users needs to upload a photo.
+   * only once – when users needs to upload a photo.
    *
    * @return  {Promise}
    * @access  private

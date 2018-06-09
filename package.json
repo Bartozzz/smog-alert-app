@@ -13,6 +13,7 @@
     "react-redux": "5.0.7",
     "react-redux-firebase": "2.1.4",
     "redux": "4.0.0"
+    "redux-form": "7.3.0",
   },
   "devDependencies": {
     "react-native-dotenv": "0.1.1",
