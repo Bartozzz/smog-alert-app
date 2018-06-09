@@ -7,11 +7,26 @@ import { StyleSheet } from 'react-native';
  *
  * @extends  React.Component
  */
-class Map extends React.Component {
+class Map extends React.PureComponent {
   map = null;
 
   componentDidMount() {
-    const { markers } = this.props;
+    this.centerMap();
+  }
+
+  componentDidUpdate() {
+    this.centerMap();
+  }
+
+  centerMap() {
+    const { markers, center } = this.props;
+
+    // If center is provided, center the map on given coordinates. Center has
+    // more importance than markers, as it is used to force center:
+    if (center && 'latitude' in center && 'longitude' in center) {
+      this.map.fitToCoordinates([center], { animated: true });
+      return;
+    }
 
     // Center map on supplied markers. Markers can be recognized based on their
     // identifier, so we need to filter out markers without identifiers:
@@ -20,19 +35,20 @@ class Map extends React.Component {
         .filter(marker => marker.hasOwnProperty('id'))
         .map(marker => marker.id);
 
-      this.map.fitToSuppliedMarkers(identifiers);
+      this.map.fitToSuppliedMarkers(identifiers, true);
+      return;
     }
   }
 
   render() {
-    const { initialRegion, onMapPress, markers, style } = this.props;
+    const { markers, style, ...props } = this.props;
 
     return (
       <MapView
+        {...props}
         ref={map => (this.map = map)}
         style={{ ...StyleSheet.absoluteFillObject, ...style }}
-        initialRegion={initialRegion}
-        onPress={onMapPress}
+        showsUserLocation
         loadingEnabled
         loadingIndicatorColor="#666666"
         loadingBackgroundColor="#eeeeee"
