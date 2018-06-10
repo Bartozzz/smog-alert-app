@@ -6,6 +6,11 @@
   <br>
 
 We’ve created this application, because we believe that nobody should be allowed to burn garbage in their houses – that’s dangerous for the environment and everybody’s health. Smog Alert App works on each mobile platform - it is based on [`React Native`](https://facebook.github.io/react-native/), licensed under the *[MIT license](#license)*.
+
+<br>
+
+<img src="https://i.imgur.com/22auMwV.png" width="400"/>
+<img src="https://i.imgur.com/jB15dVK.png" width="400"/>
 </div>
 
 >**Note:** This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app). Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
