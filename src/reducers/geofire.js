@@ -36,7 +36,7 @@ export const geofireReducer = (state = initialState, action) => {
 
     case GEOFIRE_KEY_EXITED:
       return R.evolve(R.__, state)({
-        markers: R.dissoc(action.key, state.markers),
+        markers: R.always(R.dissoc(action.key, state.markers)),
       });
 
     default:
