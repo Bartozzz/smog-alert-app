@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import { POLLUTER_ADD_PROOF, POLLUTER_ADD_MARKER } from '../actions/polluter';
 
 const initialState = {
@@ -17,10 +18,10 @@ const initialState = {
 export const polluterReducer = (state = initialState, action) => {
   switch (action.type) {
     case POLLUTER_ADD_PROOF:
-      return { ...state, image: action.image };
+      return R.assoc('image', action.image)(state);
 
     case POLLUTER_ADD_MARKER:
-      return { ...state, coordinate: action.coordinate };
+      return R.assoc('coordinate', action.coordinate)(state);
 
     default:
       return state;

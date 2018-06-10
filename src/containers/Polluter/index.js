@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import { polluterAddProof, polluterAddMarker } from '../../actions/polluter';
-import { geofire } from '../../store/configureGeofire';
+import { geoFire } from '../../store/configureGeofire';
 import Polluter from '../../components/Polluter';
 
 class PolluterScreen extends React.Component {
@@ -23,7 +23,7 @@ class PolluterScreen extends React.Component {
         description: values.description,
       });
 
-      await geofire.set(polluter.key, [
+      await geoFire.set(polluter.key, [
         coordinate.latitude,
         coordinate.longitude,
       ]);

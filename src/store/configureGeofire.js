@@ -5,6 +5,6 @@ import { firebase } from './configureFirebase';
 const markers = firebase.database().ref('marker');
 
 // Create a GeoFire index
-const geofire = new GeoFire(markers);
+const geoFire = new GeoFire(markers);
 
-export { geofire, geofireSaga };
+export { geoFire };
