@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { MapView } from 'expo';
 import { StyleSheet } from 'react-native';
+import { shallowEqual, arraysEqual } from '../../helpers/objects';
 
 /**
  * Renders a native map with provided markers and default styles.
@@ -11,22 +12,35 @@ class Map extends React.PureComponent {
   map = null;
 
   componentDidMount() {
-    this.centerMap();
+    this.centerMapOnMarkers();
   }
 
-  componentDidUpdate() {
-    this.centerMap();
+  componentDidUpdate(prevProps) {
+    const newProps = this.props;
+
+    // if (!shallowEqual(prevProps, this.props))
+
+    // Recenter map on coords if center property has changed. This will be
+    // triggered each time user adds a new polluter on the map:
+    if (!arraysEqual(prevProps.center, newProps.center)) {
+      this.centerMapOnCoords();
+    }
   }
 
-  centerMap() {
-    const { markers, center } = this.props;
+  centerMapOnCoords() {
+    const { center, animated } = this.props;
 
     // If center is provided, center the map on given coordinates. Center has
     // more importance than markers, as it is used to force center:
     if (center && 'latitude' in center && 'longitude' in center) {
-      this.map.fitToCoordinates([center], { animated: true });
-      return;
+      this.map.fitToCoordinates([center], {
+        animated: animated || false,
+      });
     }
+  }
+
+  centerMapOnMarkers() {
+    const { markers, animated } = this.props;
 
     // Center map on supplied markers. Markers can be recognized based on their
     // identifier, so we need to filter out markers without identifiers:
@@ -35,8 +49,7 @@ class Map extends React.PureComponent {
         .filter(marker => marker.hasOwnProperty('id'))
         .map(marker => marker.id);
 
-      this.map.fitToSuppliedMarkers(identifiers, true);
-      return;
+      this.map.fitToSuppliedMarkers(identifiers, animated || false);
     }
   }
 

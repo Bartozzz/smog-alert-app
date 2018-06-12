@@ -10,8 +10,6 @@ class PollutersScreen extends React.Component {
         markers={markers}
         center={center}
         onRegionChange={onRegionChange}
-        minZoomLevel={3}
-        maxZoomLevel={16}
         toolbarEnabled={false}
         showsUserLocation
       />
