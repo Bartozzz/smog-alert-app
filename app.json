@@ -1,8 +1,12 @@
 {
-  "name": "Smog Alert",
-  "displayName": "Smog Alert",
-
   "expo": {
+    "name": "Smog Alert",
+    "description":
+      "Smog Alert App provides real-time air pollution data all around the world and shows nearby polluters.",
+
+    "githubUrl": "https://github.com/Bartozzz/smog-alert-app",
+
+    "orientation": "portrait",
     "sdkVersion": "27.0.0"
   }
 }
