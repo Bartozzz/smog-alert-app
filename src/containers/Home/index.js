@@ -1,19 +1,9 @@
 import * as React from 'react';
-import { createBottomTabNavigator } from 'react-navigation';
 import { Right, Button, Text } from 'native-base';
+import { BottomTabNavigation } from '../Navigation/BottomTab';
 
-import PollutersScreen from '../Polluters';
-import AboutScreen from '../About';
-import InfoScreen from '../Info';
-
-const BottomNav = createBottomTabNavigator({
-  Polluters: PollutersScreen,
-  Info: InfoScreen,
-  About: AboutScreen,
-});
-
-class HomeScreen extends React.Component {
-  static router = BottomNav.router;
+class HomeContainer extends React.Component {
+  static router = BottomTabNavigation.router;
   static navigationOptions = ({ navigation }) => ({
     title: 'Home',
     headerRight: (
@@ -26,8 +16,8 @@ class HomeScreen extends React.Component {
   });
 
   render() {
-    return <BottomNav navigation={this.props.navigation} />;
+    return <BottomTabNavigation navigation={this.props.navigation} />;
   }
 }
 
-export default HomeScreen;
+export default HomeContainer;

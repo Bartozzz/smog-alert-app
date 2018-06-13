@@ -1,12 +1,8 @@
 import * as React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { firebaseConnect } from 'react-redux-firebase';
 import { Ionicons } from '@expo/vector-icons';
-import { Text } from 'native-base';
 import About from '../../components/About';
 
-class AboutScreen extends React.Component {
+class AboutContainer extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'About us',
     tabBarIcon: ({ focused, tintColor }) => (
@@ -19,15 +15,4 @@ class AboutScreen extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  debug: state.firebase.data.debug,
-});
-
-const mapDispatchToProps = dispatch => ({
-  //…
-});
-
-export default compose(
-  firebaseConnect(['debug']),
-  connect(mapStateToProps, mapDispatchToProps)
-)(AboutScreen);
+export default AboutContainer;

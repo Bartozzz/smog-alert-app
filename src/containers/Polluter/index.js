@@ -6,7 +6,7 @@ import { polluterAddProof, polluterAddMarker } from '../../actions/polluter';
 import { geoFire } from '../../store/configureGeofire';
 import Polluter from '../../components/Polluter';
 
-class PolluterScreen extends React.Component {
+class PolluterContainer extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Add new polluter',
   });
@@ -66,4 +66,4 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   firebaseConnect(),
   connect(mapStateToProps, mapDispatchToProps)
-)(PolluterScreen);
+)(PolluterContainer);

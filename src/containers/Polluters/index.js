@@ -8,7 +8,7 @@ import Polluters from '../../components/Polluters';
 import { hav } from '../../helpers/geospatial';
 import { geofireUpdateCriteria } from '../../actions/geofire';
 
-class PollutersScreen extends React.Component {
+class PollutersContainer extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: 'Polluters',
     tabBarIcon: ({ focused, tintColor }) => (
@@ -65,4 +65,4 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   firebaseConnect(),
   connect(mapStateToProps, mapDispatchToProps)
-)(PollutersScreen);
+)(PollutersContainer);
