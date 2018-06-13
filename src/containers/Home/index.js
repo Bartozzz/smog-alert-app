@@ -8,8 +8,8 @@ class HomeContainer extends React.Component {
     title: 'Home',
     headerRight: (
       <Right>
-        <Button onPress={() => navigation.navigate('Add')} hasText transparent>
-          <Text>Add</Text>
+        <Button onPress={() => navigation.navigate('Polluter')} transparent>
+          <Text>Add polluter</Text>
         </Button>
       </Right>
     ),
