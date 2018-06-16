@@ -19,7 +19,9 @@ firebase.initializeApp({
   messagingSenderId: MESSAGING_SENDER_ID,
 });
 
-const firebaseMiddleware = reactReduxFirebase(firebase);
+const firebaseMiddleware = reactReduxFirebase(firebase, {
+  enableRedirectHandling: false
+});
 
 export {
   firebaseMiddleware,
