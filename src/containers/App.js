@@ -3,16 +3,25 @@ import { connect } from "react-redux";
 import { AppLoading, Asset, Font } from "expo";
 import { StyleSheet, Platform, Image, View } from "react-native";
 import { StackNavigation } from "./Navigation/Stack";
-import * as React from 'react';
-import { connect } from 'react-redux';
-import { AppLoading, Asset, Font } from 'expo';
-import { StyleSheet, Platform, Image, View } from 'react-native';
-import { StackNavigation } from './Navigation/Stack';
+import { requestCountries } from "../actions/countries";
+import { requestLocations } from "../actions/locations";
+import { requestParameters } from "../actions/parameters";
+import { requestSources } from "../actions/sources";
 
 class App extends React.Component {
   state = {
     isReady: false
   };
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    // Fetch basic data:
+    dispatch(requestCountries());
+    dispatch(requestParameters());
+    dispatch(requestSources());
+    dispatch(requestLocations({ limit: 10000 }));
+  }
 
   /**
    * Preloads and caches images from module or URI.
