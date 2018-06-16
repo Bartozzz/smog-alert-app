@@ -1,17 +1,17 @@
-import * as React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import { Image } from 'react-native';
-import { Content, Card, CardItem, Button, Text } from 'native-base';
-import Map from '../Map';
-import Input from '../Input';
-import CameraRoll from '../CameraRoll';
+import * as React from "react";
+import { Field, reduxForm } from "redux-form";
+import { Image } from "react-native";
+import { Content, Card, CardItem, Button, Text } from "native-base";
+import Map from "../Map";
+import Input from "../Input";
+import CameraRoll from "../CameraRoll";
 
 const Polluter = ({
   handleSubmit,
   onProofSelect,
   onMarkerSelect,
   marker,
-  invalid,
+  invalid
 }) => {
   let markers = [];
   let disabled = invalid;
@@ -19,7 +19,7 @@ const Polluter = ({
   if (marker.latitude !== 0 && marker.longitude !== 0) {
     markers.push({
       id: `Marker-${Date.now()}`,
-      coordinate: marker,
+      coordinate: marker
     });
   } else {
     disabled = true;
@@ -35,7 +35,7 @@ const Polluter = ({
         <CardItem>
           <Content>
             <Field
-              name={'title'}
+              name={"title"}
               label="Title"
               placeholder="Will be visible on the map"
               component={Input}
@@ -46,7 +46,7 @@ const Polluter = ({
         <CardItem>
           <Content>
             <Field
-              name={'description'}
+              name={"description"}
               label="Description"
               placeholder="Will be visible on the map"
               component={Input}
@@ -88,7 +88,7 @@ const Polluter = ({
                 <CardItem>
                   <Image
                     source={{ uri: image }}
-                    style={{ width: '100%', height: 200 }}
+                    style={{ width: "100%", height: 200 }}
                   />
                 </CardItem>
               )}
@@ -110,19 +110,19 @@ const Polluter = ({
 };
 
 export default reduxForm({
-  form: 'polluterForm',
+  form: "polluterForm",
 
   validate(values) {
     const errors = {};
 
     if (!values.title) {
-      errors.title = 'This field is required';
+      errors.title = "This field is required";
     }
 
     if (!values.description) {
-      errors.description = 'This field is required';
+      errors.description = "This field is required";
     }
 
     return errors;
-  },
+  }
 })(Polluter);

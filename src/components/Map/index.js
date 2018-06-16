@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { MapView } from 'expo';
-import { StyleSheet } from 'react-native';
-import { shallowEqual, arraysEqual } from '../../helpers/objects';
+import * as React from "react";
+import { MapView } from "expo";
+import { StyleSheet } from "react-native";
+import { shallowEqual, arraysEqual } from "../../helpers/objects";
 
 /**
  * Renders a native map with provided markers and default styles.
@@ -32,9 +32,9 @@ class Map extends React.PureComponent {
 
     // If center is provided, center the map on given coordinates. Center has
     // more importance than markers, as it is used to force center:
-    if (center && 'latitude' in center && 'longitude' in center) {
+    if (center && "latitude" in center && "longitude" in center) {
       this.map.fitToCoordinates([center], {
-        animated: animated || false,
+        animated: animated || false
       });
     }
   }
@@ -46,7 +46,7 @@ class Map extends React.PureComponent {
     // identifier, so we need to filter out markers without identifiers:
     if (markers) {
       const identifiers = markers
-        .filter(marker => marker.hasOwnProperty('id'))
+        .filter(marker => marker.hasOwnProperty("id"))
         .map(marker => marker.id);
 
       this.map.fitToSuppliedMarkers(identifiers, animated || false);
@@ -69,11 +69,9 @@ class Map extends React.PureComponent {
         {markers &&
           markers.map(marker => (
             <MapView.Marker
+              {...marker}
               key={marker.id}
               identifier={String(marker.id)}
-              title={marker.title}
-              description={marker.description}
-              coordinate={marker.coordinate}
             />
           ))}
       </MapView>

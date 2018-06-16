@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Permissions, ImagePicker } from 'expo';
-import { Toast } from 'native-base';
+import * as React from "react";
+import { Permissions, ImagePicker } from "expo";
+import { Toast } from "native-base";
 
 /**
  * A HOC which requests permissions to open camera roll and pick a photo if
@@ -10,7 +10,7 @@ import { Toast } from 'native-base';
  */
 class CameraRoll extends React.Component {
   state = {
-    image: null,
+    image: null
   };
 
   /**
@@ -23,8 +23,8 @@ class CameraRoll extends React.Component {
   requestPermissions = () => {
     return Permissions.askAsync(Permissions.CAMERA_ROLL).catch(error => {
       Toast.show({
-        text: 'Permissions not granted',
-        buttonText: 'Okay',
+        text: "Permissions not granted",
+        buttonText: "Okay"
       });
     });
   };
@@ -45,7 +45,7 @@ class CameraRoll extends React.Component {
 
       if (!result.cancelled) {
         this.setState({
-          image: result.uri,
+          image: result.uri
         });
 
         if (onSelect) {
@@ -54,8 +54,8 @@ class CameraRoll extends React.Component {
       }
     } catch (error) {
       Toast.show({
-        text: 'Something went wrong',
-        buttonText: 'Okay',
+        text: "Something went wrong",
+        buttonText: "Okay"
       });
     }
   };
@@ -66,7 +66,7 @@ class CameraRoll extends React.Component {
 
     return children({
       onPress: this.requestImage,
-      image: image,
+      image: image
     });
   }
 }

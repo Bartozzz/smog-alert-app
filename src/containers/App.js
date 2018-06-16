@@ -1,3 +1,8 @@
+import * as React from "react";
+import { connect } from "react-redux";
+import { AppLoading, Asset, Font } from "expo";
+import { StyleSheet, Platform, Image, View } from "react-native";
+import { StackNavigation } from "./Navigation/Stack";
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { AppLoading, Asset, Font } from 'expo';
@@ -6,7 +11,7 @@ import { StackNavigation } from './Navigation/Stack';
 
 class App extends React.Component {
   state = {
-    isReady: false,
+    isReady: false
   };
 
   /**
@@ -19,7 +24,7 @@ class App extends React.Component {
     const images = [];
 
     return images.map(image => {
-      if (typeof image === 'string') {
+      if (typeof image === "string") {
         return Image.prefetch(image);
       } else {
         return Asset.fromModule(image).downloadAsync();
@@ -37,10 +42,10 @@ class App extends React.Component {
     const fonts = [];
 
     // Fonts required by Native Base on Android:
-    if (Platform.OS === 'android') {
+    if (Platform.OS === "android") {
       fonts.push({
-        Roboto: require('native-base/Fonts/Roboto.ttf'),
-        Roboto_medium: require('native-base/Fonts/Roboto_medium.ttf'),
+        Roboto: require("native-base/Fonts/Roboto.ttf"),
+        Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf")
       });
     }
 
@@ -81,8 +86,8 @@ class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-  },
+    flex: 1
+  }
 });
 
 export default connect()(App);

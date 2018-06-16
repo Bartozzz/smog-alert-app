@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Content, Card, CardItem, Text } from 'native-base';
+import * as React from "react";
+import { Content, Card, CardItem, Text } from "native-base";
 
 const Info = () => (
   <Content padder>

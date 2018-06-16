@@ -1,5 +1,5 @@
-import firebase from 'firebase';
-import { reactReduxFirebase } from 'react-redux-firebase';
+import firebase from "firebase";
+import { reactReduxFirebase } from "react-redux-firebase";
 
 import {
   API_KEY,
@@ -7,8 +7,8 @@ import {
   DATABASE_URL,
   PROJECT_ID,
   STORAGE_BUCKET,
-  MESSAGING_SENDER_ID,
-} from 'react-native-dotenv';
+  MESSAGING_SENDER_ID
+} from "react-native-dotenv";
 
 firebase.initializeApp({
   apiKey: API_KEY,
@@ -16,14 +16,11 @@ firebase.initializeApp({
   databaseURL: DATABASE_URL,
   projectId: PROJECT_ID,
   storageBucket: STORAGE_BUCKET,
-  messagingSenderId: MESSAGING_SENDER_ID,
+  messagingSenderId: MESSAGING_SENDER_ID
 });
 
 const firebaseMiddleware = reactReduxFirebase(firebase, {
   enableRedirectHandling: false
 });
 
-export {
-  firebaseMiddleware,
-  firebase,
-};
+export { firebaseMiddleware, firebase };

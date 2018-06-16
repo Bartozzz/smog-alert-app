@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Content, Card, CardItem, Text } from 'native-base';
+import * as React from "react";
+import { Content, Card, CardItem, Text } from "native-base";
 
 const About = () => (
   <Content padder>
@@ -14,20 +14,20 @@ const About = () => (
             We’ve created this application, because we believe that nobody
             should be allowed to burn garbage in their houses – that’s dangerous
             for the environment and everybody’s health.
-            {'\n'}
+            {"\n"}
           </Text>
 
           <Text>
             Burning plastic, rubber or other man-made materials creates dioxin
             and other dangerous toxics in the air, soil & groundwater.
-            {'\n'}
+            {"\n"}
           </Text>
 
           <Text>
             This endangers you, your children, your neighbours, your pets, birds
             and fish – with tumours, cancer, learning disorders, infertility,
             immune system problems, asthma, and other diseases.
-            {'\n'}
+            {"\n"}
           </Text>
 
           <Text>

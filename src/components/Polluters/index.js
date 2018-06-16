@@ -1,5 +1,5 @@
-import * as React from 'react';
-import Map from '../Map';
+import * as React from "react";
+import Map from "../Map";
 
 const Polluters = ({ markers, center, onRegionChange }) => (
   <Map

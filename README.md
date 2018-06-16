@@ -3,9 +3,9 @@
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![Github Releases](https://img.shields.io/github/downloads/Bartozzz/smog-alert-app/latest/total.svg)](https://github.com/Bartozzz/smog-alert-app/releases)
-  <br>
+<br>
 
-We’ve created this application, because we believe that nobody should be allowed to burn garbage in their houses – that’s dangerous for the environment and everybody’s health. Smog Alert App works on each mobile platform - it is based on [`React Native`](https://facebook.github.io/react-native/), licensed under the *[MIT license](#license)*.
+We’ve created this application, because we believe that nobody should be allowed to burn garbage in their houses – that’s dangerous for the environment and everybody’s health. Smog Alert App works on each mobile platform - it is based on [`React Native`](https://facebook.github.io/react-native/), licensed under the _[MIT license](#license)_.
 
 <br>
 
@@ -13,7 +13,7 @@ We’ve created this application, because we believe that nobody should be allow
 <img src="https://i.imgur.com/jB15dVK.png" width="400"/>
 </div>
 
->**Note:** This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app). Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
+> **Note:** This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app). Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
 
 <h2 align="center">Contributing</h2>
 
@@ -51,14 +51,14 @@ $ npm run <command>
 
 #### List of commands
 
-| Command         | Description                                       |
-|-----------------|---------------------------------------------------|
-| `start`         | Runs your app in development mode. Open it in the [Expo app](https://expo.io) on your phone to view it. It will reload if you save edits to your files, and you will see build errors and logs in the terminal. Sometimes you may need to reset or clear the React Native packager's cache. To do so, you can pass the `--reset-cache` flag to the start script. |
-| `ios`           | Like `npm start`, but also attempts to open your app in the iOS Simulator if you're on a Mac and have it installed. |
-| `android`       | Like `npm start`, but also attempts to open your app on a connected Android device or emulator. Requires an installation of Android build tools (see [React Native docs](https://facebook.github.io/react-native/docs/getting-started.html) for detailed setup). |
-| `eject`         | This will start the process of "ejecting" from build scripts. You'll be asked a couple of questions about how you'd like to build your project. |
+| Command   | Description                                                                                                                                                                                                                                                                                                                                                      |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `start`   | Runs your app in development mode. Open it in the [Expo app](https://expo.io) on your phone to view it. It will reload if you save edits to your files, and you will see build errors and logs in the terminal. Sometimes you may need to reset or clear the React Native packager's cache. To do so, you can pass the `--reset-cache` flag to the start script. |
+| `ios`     | Like `npm start`, but also attempts to open your app in the iOS Simulator if you're on a Mac and have it installed.                                                                                                                                                                                                                                              |
+| `android` | Like `npm start`, but also attempts to open your app on a connected Android device or emulator. Requires an installation of Android build tools (see [React Native docs](https://facebook.github.io/react-native/docs/getting-started.html) for detailed setup).                                                                                                 |
+| `eject`   | This will start the process of "ejecting" from build scripts. You'll be asked a couple of questions about how you'd like to build your project.                                                                                                                                                                                                                  |
 
->**Warning:** Running eject is a permanent action (aside from whatever version control system you use). An ejected app will require you to have an [Xcode and/or Android Studio environment](https://facebook.github.io/react-native/docs/getting-started.html) set up.
+> **Warning:** Running eject is a permanent action (aside from whatever version control system you use). An ejected app will require you to have an [Xcode and/or Android Studio environment](https://facebook.github.io/react-native/docs/getting-started.html) set up.
 
 ### Troubleshooting
 

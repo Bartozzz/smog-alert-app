@@ -1,12 +1,13 @@
-export const POLLUTER_ADD_PROOF = 'POLLUTER_ADD_PROOF';
-export const POLLUTER_ADD_MARKER = 'POLLUTER_ADD_MARKER';
+// Used in "Add polluter" view to temporary store incident proof and location.
+export const POLLUTER_ADD_PROOF = "POLLUTER_ADD_PROOF";
+export const POLLUTER_ADD_MARKER = "POLLUTER_ADD_MARKER";
 
 export const polluterAddProof = image => ({
   type: POLLUTER_ADD_PROOF,
-  image,
+  image
 });
 
 export const polluterAddMarker = coordinate => ({
   type: POLLUTER_ADD_MARKER,
-  coordinate,
+  coordinate
 });

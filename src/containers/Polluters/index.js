@@ -1,19 +1,19 @@
-import * as R from 'ramda';
-import * as React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { firebaseConnect } from 'react-redux-firebase';
-import { Ionicons } from '@expo/vector-icons';
-import Polluters from '../../components/Polluters';
-import { hav } from '../../helpers/geospatial';
-import { geofireUpdateCriteria } from '../../actions/geofire';
+import * as R from "ramda";
+import * as React from "react";
+import { compose } from "redux";
+import { connect } from "react-redux";
+import { firebaseConnect } from "react-redux-firebase";
+import { Ionicons } from "@expo/vector-icons";
+import Polluters from "../../components/Polluters";
+import { hav } from "../../helpers/geospatial";
+import { geofireUpdateCriteria } from "../../actions/geofire";
 
 class PollutersContainer extends React.Component {
   static navigationOptions = ({ navigation }) => ({
-    title: 'Polluters',
+    title: "Polluters",
     tabBarIcon: ({ focused, tintColor }) => (
       <Ionicons name="ios-compass-outline" size={24} color={tintColor} />
-    ),
+    )
   });
 
   onRegionChange = region => {
@@ -39,7 +39,7 @@ class PollutersContainer extends React.Component {
 
     // Center param is provided once a new polluter has been added by the user.
     // It forces map to center on the added polluter (success fallback):
-    const center = navigation.getParam('center');
+    const center = navigation.getParam("center");
 
     const points = R.values(markers);
 
@@ -54,12 +54,12 @@ class PollutersContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  markers: state.geofire.markers,
+  markers: state.geofire.markers
 });
 
 const mapDispatchToProps = dispatch => ({
   updateCriteria: (center, radius) =>
-    dispatch(geofireUpdateCriteria(center, radius)),
+    dispatch(geofireUpdateCriteria(center, radius))
 });
 
 export default compose(
