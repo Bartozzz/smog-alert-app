@@ -1,15 +1,10 @@
 import * as React from 'react';
-import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import { AppLoading, Asset, Font } from 'expo';
 import { StyleSheet, Platform, Image, View } from 'react-native';
-import { configureStore } from '../store/configureStore';
 import { StackNavigation } from './Navigation/Stack';
 
-const store = configureStore({
-  // …
-});
-
-export default class App extends React.Component {
+class App extends React.Component {
   state = {
     isReady: false,
   };
@@ -77,11 +72,9 @@ export default class App extends React.Component {
     }
 
     return (
-      <Provider store={store}>
-        <View style={styles.container}>
-          <StackNavigation />
-        </View>
-      </Provider>
+      <View style={styles.container}>
+        <StackNavigation />
+      </View>
     );
   }
 }
@@ -91,3 +84,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+export default connect()(App);
