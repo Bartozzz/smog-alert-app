@@ -21,6 +21,5 @@ function* updateCriteria(action) {
 }
 
 export function* positionSaga() {
-  // yield takeEvery(GEOFIRE_UPDATE_CRITERIA, updateCriteria);
   yield takeLatest(GEOFIRE_UPDATE_CRITERIA, updateCriteria);
 }

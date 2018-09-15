@@ -1,25 +1,19 @@
-import { take, call, put } from "redux-saga/effects";
-import { query } from "../helpers/query";
-
+import { fork, take, call, put } from "redux-saga/effects";
+import { createSagaHandler } from "../helpers/saga";
 import {
   receiveParameters,
   PARAMETERS_REQUEST,
   PARAMETERS_ENDPOINT
 } from "../actions/parameters";
 
-function* fetchParameters(action) {
-  try {
-    const q = query(action.query);
-    const data = yield call(fetch, `${PARAMETERS_ENDPOINT}${q}`);
-    const json = yield data.json();
-
-    yield put(receiveParameters(json));
-  } catch (error) {
-    yield put(receiveParameters(null, error.message));
-  }
-}
+const fetchParameters = createSagaHandler({
+  endpoint: PARAMETERS_ENDPOINT,
+  callback: receiveParameters
+});
 
 export function* parametersSaga() {
+  const action = yield take(PARAMETERS_REQUEST);
+
   // Only needs to be fetched once:
-  yield take(PARAMETERS_REQUEST, fetchParameters);
+  yield fork(fetchParameters, action);
 }

@@ -1,25 +1,19 @@
-import { take, call, put } from "redux-saga/effects";
-import { query } from "../helpers/query";
-
+import { fork, take, call, put } from "redux-saga/effects";
+import { createSagaHandler } from "../helpers/saga";
 import {
   receiveCountries,
   COUNTRIES_REQUEST,
   COUNTRIES_ENDPOINT
 } from "../actions/countries";
 
-function* fetchCountries(action) {
-  try {
-    const q = query(action.query);
-    const data = yield call(fetch, `${COUNTRIES_ENDPOINT}${q}`);
-    const json = yield data.json();
-
-    yield put(receiveCountries(json));
-  } catch (error) {
-    yield put(receiveCountries(null, error.message));
-  }
-}
+const fetchCountries = createSagaHandler({
+  endpoint: COUNTRIES_ENDPOINT,
+  callback: receiveCountries
+});
 
 export function* countriesSaga() {
+  const action = yield take(COUNTRIES_REQUEST);
+
   // Only needs to be fetched once:
-  yield take(COUNTRIES_REQUEST, fetchCountries);
+  yield fork(fetchCountries, action);
 }
