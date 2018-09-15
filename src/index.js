@@ -7,7 +7,7 @@
 
 import * as React from "react";
 import Expo from "expo";
-import Setup from "./containers/Setup";
+import Entry from "./containers/Entry";
 
 // Disables warn boxes on simulators:
 console.disableYellowBox = true;
@@ -16,4 +16,4 @@ if (process.env.NODE_ENV === "development") {
   Expo.KeepAwake.activate();
 }
 
-Expo.registerRootComponent(Setup);
+Expo.registerRootComponent(Entry);
