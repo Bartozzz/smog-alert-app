@@ -9,6 +9,7 @@
     "geofire": "^4.1.2",
     "native-base": "^2.4.5",
     "ramda": "0.25.0",
+    "ramda-adjunct": "2.10.0",
     "react": "^16.3.1",
     "react-native": "~0.55.2",
     "react-navigation": "^2.2.3",
