@@ -1,5 +1,7 @@
 <div align="center">
-  <h1>Smog Alert App</h1>
+  <h1>
+    <img src="https://i.imgur.com/tbg0QnK.png" width="300"/>
+  </h1>
 
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![Github Releases](https://img.shields.io/github/downloads/Bartozzz/smog-alert-app/latest/total.svg)](https://github.com/Bartozzz/smog-alert-app/releases)
@@ -27,7 +29,7 @@ We’ve created this application, because we believe that nobody should be allow
 
 ### License
 
-Smog Alert App was created and developed by [Bartosz Łaniewski](https://github.com/Bartozzz). The full list of contributors can be found [here](https://github.com/Bartozzz/smog-alert-app/graphs/contributors). Smog Alert App's code is [MIT licensed](https://github.com/Bartozzz/smog-alert-app/blob/master/LICENSE).
+Smog Alert App was created and developed by [Bartosz Łaniewski](https://github.com/Bartozzz). The full list of contributors can be found [here](https://github.com/Bartozzz/smog-alert-app/graphs/contributors). Smog Alert App's code is [MIT licensed](https://github.com/Bartozzz/smog-alert-app/blob/master/LICENSE). Icons made by [ssnjrthegr8](https://github.com/ssnjrthegr8).
 
 ### Development
 
