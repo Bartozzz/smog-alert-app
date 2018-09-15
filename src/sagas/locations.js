@@ -1,28 +1,12 @@
-import { take, call, put } from "redux-saga/effects";
+import { fork, take, call, put } from "redux-saga/effects";
 import { geofireAddKey } from "../actions/geofire";
 import { query } from "../helpers/query";
-
+import { addMarkers } from "../actions/markers";
 import {
   receiveLocations,
   LOCATIONS_REQUEST,
   LOCATIONS_ENDPOINT
 } from "../actions/locations";
-
-function* addLocationMarker(location) {
-  const { city, coordinates } = location;
-
-  if (location.coordinates) {
-    // yield put(geofireAddKey({
-    //   key: city,
-    //   location: [
-    //     coordinates.latitude,
-    //     coordinates.longitude
-    //   ],
-    //   distance: 0,
-    //   kind: MARKER_MEASUREMENT
-    // }));
-  }
-}
 
 function* fetchLocations(action) {
   try {
@@ -31,18 +15,15 @@ function* fetchLocations(action) {
     const json = yield data.json();
 
     yield put(receiveLocations(json));
-
-    // if (json.results) {
-    //   for (const location of json.results) {
-    //     yield addLocationMarker(location);
-    //   }
-    // }
+    // yield put(addMarkers(json.results));
   } catch (error) {
     yield put(receiveLocations(null, error.message));
   }
 }
 
 export function* locationsSaga() {
+  const action = yield take(LOCATIONS_REQUEST);
+
   // Only needs to be fetched once:
-  yield take(LOCATIONS_REQUEST, fetchLocations);
+  yield fork(fetchLocations, action);
 }

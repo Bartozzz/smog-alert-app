@@ -71,6 +71,7 @@ class Map extends React.PureComponent {
             <MapView.Marker
               {...marker}
               key={marker.id}
+              coordinate={marker.location}
               identifier={String(marker.id)}
             />
           ))}
