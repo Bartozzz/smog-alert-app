@@ -16,14 +16,14 @@ export const measurementsReducer = (state = initialState, action) => {
   switch (action.type) {
     case MEASUREMENTS_REQUEST:
       return R.evolve(R.__, state)({
-        fetching: R.always(true),
-        fetched: R.always(false)
+        fetching: R.T,
+        fetched: R.F
       });
 
     case MEASUREMENTS_RECEIVE:
       return R.evolve(R.__, state)({
-        fetching: R.always(false),
-        fetched: R.always(true),
+        fetching: R.F,
+        fetched: R.T,
         error: R.always(action.error),
         data: R.concat(action.json.results)
       });

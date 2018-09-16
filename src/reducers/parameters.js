@@ -12,14 +12,14 @@ export const parametersReducer = (state = initialState, action) => {
   switch (action.type) {
     case PARAMETERS_REQUEST:
       return R.evolve(R.__, state)({
-        fetching: R.always(true),
-        fetched: R.always(false)
+        fetching: R.T,
+        fetched: R.F
       });
 
     case PARAMETERS_RECEIVE:
       return R.evolve(R.__, state)({
-        fetching: R.always(false),
-        fetched: R.always(true),
+        fetching: R.F,
+        fetched: R.T,
         error: R.always(action.error),
         data: R.always(action.json.results)
       });
