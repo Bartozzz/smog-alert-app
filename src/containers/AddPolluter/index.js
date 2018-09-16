@@ -4,9 +4,9 @@ import { connect } from "react-redux";
 import { firebaseConnect } from "react-redux-firebase";
 import { polluterAddProof, polluterAddMarker } from "../../actions/polluter";
 import { geoFire } from "../../store/configureGeofire";
-import Polluter from "../../components/Polluter";
+import AddPolluter from "../../components/AddPolluter";
 
-class PolluterContainer extends React.Component {
+class AddPolluterContainer extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: "Add new polluter"
   });
@@ -42,7 +42,7 @@ class PolluterContainer extends React.Component {
     const { onProofSelect, onMarkerSelect, coordinate } = this.props;
 
     return (
-      <Polluter
+      <AddPolluter
         marker={coordinate}
         onSubmit={this.onSubmit}
         onProofSelect={onProofSelect}
@@ -66,4 +66,4 @@ const mapDispatchToProps = dispatch => ({
 export default compose(
   firebaseConnect(),
   connect(mapStateToProps, mapDispatchToProps)
-)(PolluterContainer);
+)(AddPolluterContainer);

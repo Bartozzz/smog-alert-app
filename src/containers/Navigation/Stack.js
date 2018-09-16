@@ -1,9 +1,8 @@
 import { createStackNavigator } from "react-navigation";
-
+import AddPolluter from "../AddPolluter";
 import Home from "../Home";
-import Polluter from "../Polluter";
 
 export const StackNavigation = createStackNavigator({
   Home,
-  Polluter
+  AddPolluter
 });

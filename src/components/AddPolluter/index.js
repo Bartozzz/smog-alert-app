@@ -8,7 +8,7 @@ import Map from "../Map";
 import Input from "../Input";
 import CameraRoll from "../CameraRoll";
 
-const Polluter = ({
+const AddPolluter = ({
   handleSubmit,
   onProofSelect,
   onMarkerSelect,
@@ -123,4 +123,4 @@ export default reduxForm({
 
     return errors;
   }
-})(Polluter);
+})(AddPolluter);
