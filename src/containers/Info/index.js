@@ -1,6 +1,8 @@
 import * as React from "react";
+import { connect } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
 import Info from "../../components/Info";
+import Loading from "../../components/Loading";
 
 class InfoContainer extends React.Component {
   static navigationOptions = ({ navigation }) => ({
@@ -11,8 +13,30 @@ class InfoContainer extends React.Component {
   });
 
   render() {
-    return <Info />;
+    const { locations, measurements, parameters } = this.props;
+
+    if (!locations.fetched || !measurements.fetched || !parameters.fetched) {
+      return <Loading />;
+    }
+
+    return (
+      <Info
+        locations={locations.data}
+        parameters={parameters.data}
+        measurements={measurements.data}
+      />
+    );
   }
 }
 
-export default InfoContainer;
+const mapStateToProps = state => ({
+  locations: state.locations,
+  parameters: state.parameters,
+  measurements: state.measurements
+});
+
+const mapDispatchToProps = dispatch => ({
+  // …
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(InfoContainer);

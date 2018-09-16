@@ -9,7 +9,7 @@ const initialState = {
   fetching: false,
   fetched: false,
   error: null,
-  json: {}
+  data: []
 };
 
 export const measurementsReducer = (state = initialState, action) => {
@@ -25,7 +25,7 @@ export const measurementsReducer = (state = initialState, action) => {
         fetching: R.always(false),
         fetched: R.always(true),
         error: R.always(action.error),
-        json: R.always(action.json)
+        data: R.concat(action.json.results)
       });
 
     default:

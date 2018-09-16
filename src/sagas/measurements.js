@@ -1,4 +1,4 @@
-import { takeLatest, call, put } from "redux-saga/effects";
+import { takeEvery, call, put } from "redux-saga/effects";
 import { createSagaHandler } from "../helpers/saga";
 import {
   receiveMeasurements,
@@ -12,5 +12,5 @@ const fetchMeasurements = createSagaHandler({
 });
 
 export function* measurementsSaga() {
-  yield takeLatest(MEASUREMENTS_REQUEST, fetchMeasurements);
+  yield takeEvery(MEASUREMENTS_REQUEST, fetchMeasurements);
 }

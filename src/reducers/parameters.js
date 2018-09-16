@@ -5,7 +5,7 @@ const initialState = {
   fetching: false,
   fetched: false,
   error: null,
-  json: {}
+  data: []
 };
 
 export const parametersReducer = (state = initialState, action) => {
@@ -21,7 +21,7 @@ export const parametersReducer = (state = initialState, action) => {
         fetching: R.always(false),
         fetched: R.always(true),
         error: R.always(action.error),
-        json: R.always(action.json)
+        data: R.always(action.json.results)
       });
 
     default:
