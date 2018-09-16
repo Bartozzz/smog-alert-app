@@ -1,10 +1,10 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { Ionicons } from "@expo/vector-icons";
-import Info from "../../components/Info";
+import AirQuality from "../../components/AirQuality";
 import Loading from "../../components/Loading";
 
-class InfoContainer extends React.Component {
+class AirQualityContainer extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: "Air quality",
     tabBarIcon: ({ focused, tintColor }) => (
@@ -20,7 +20,7 @@ class InfoContainer extends React.Component {
     }
 
     return (
-      <Info
+      <AirQuality
         locations={locations.data}
         parameters={parameters.data}
         measurements={measurements.data}
@@ -35,8 +35,4 @@ const mapStateToProps = state => ({
   measurements: state.measurements
 });
 
-const mapDispatchToProps = dispatch => ({
-  // …
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(InfoContainer);
+export default connect(mapStateToProps, null)(AirQualityContainer);

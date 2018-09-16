@@ -1,8 +1,8 @@
 import * as React from "react";
 import { Ionicons } from "@expo/vector-icons";
-import About from "../../components/About";
+import AboutUs from "../../components/AboutUs";
 
-class AboutContainer extends React.Component {
+class AboutUsContainer extends React.Component {
   static navigationOptions = ({ navigation }) => ({
     title: "About us",
     tabBarIcon: ({ focused, tintColor }) => (
@@ -11,8 +11,8 @@ class AboutContainer extends React.Component {
   });
 
   render() {
-    return <About />;
+    return <AboutUs />;
   }
 }
 
-export default AboutContainer;
+export default AboutUsContainer;

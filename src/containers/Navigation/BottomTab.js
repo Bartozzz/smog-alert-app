@@ -1,11 +1,10 @@
 import { createBottomTabNavigator } from "react-navigation";
-
-import About from "../About";
-import Info from "../Info";
+import AboutUs from "../AboutUs";
+import AirQuality from "../AirQuality";
 import Polluters from "../Polluters";
 
 export const BottomTabNavigation = createBottomTabNavigator({
   Polluters,
-  Info,
-  About
+  AirQuality,
+  AboutUs
 });
