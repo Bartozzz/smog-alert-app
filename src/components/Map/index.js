@@ -1,7 +1,7 @@
 import * as React from "react";
+import * as R from "ramda";
 import { MapView } from "expo";
 import { StyleSheet } from "react-native";
-import { shallowEqual, arraysEqual } from "../../helpers/objects";
 
 /**
  * Renders a native map with provided markers and default styles.
@@ -16,13 +16,9 @@ class Map extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const newProps = this.props;
-
-    // if (!shallowEqual(prevProps, this.props))
-
     // Recenter map on coords if center property has changed. This will be
     // triggered each time user adds a new polluter on the map:
-    if (!arraysEqual(prevProps.center, newProps.center)) {
+    if (!R.eqProps("center", prevProps, this.props)) {
       this.centerMapOnCoords();
     }
   }
@@ -32,7 +28,7 @@ class Map extends React.PureComponent {
 
     // If center is provided, center the map on given coordinates. Center has
     // more importance than markers, as it is used to force center:
-    if (center && "latitude" in center && "longitude" in center) {
+    if (R.allPass(R.hasIn("latitude"), R.hasIn("longitude"))(center)) {
       this.map.current.fitToCoordinates([center], {
         animated: animated || false
       });
