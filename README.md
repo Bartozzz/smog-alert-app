@@ -30,7 +30,7 @@ We’ve created this application, because we believe that nobody should be allow
 
 ### License
 
-Smog Alert App was created and developed by [Bartosz Łaniewski](https://github.com/Bartozzz). The full list of contributors can be found [here](https://github.com/Bartozzz/smog-alert-app/graphs/contributors). Smog Alert App's code is [MIT licensed](https://github.com/Bartozzz/smog-alert-app/blob/master/LICENSE). Icons made by [ssnjrthegr8](https://github.com/ssnjrthegr8).
+Smog Alert App was created and developed by [Bartosz Łaniewski](https://github.com/Bartozzz). The full list of contributors can be found [here](https://github.com/Bartozzz/smog-alert-app/graphs/contributors). Smog Alert App's code is [MIT licensed](https://github.com/Bartozzz/smog-alert-app/blob/master/LICENSE). Icons made by [ssnjrthegr8](https://github.com/ssnjrthegr8). Air quality data is licensed under the [Creative Commons Attribution 4.0 Generic License](https://creativecommons.org/licenses/by/4.0/). It is attributed to the [OpenAQ community](https://openaq.org/).
 
 ### Development
 
