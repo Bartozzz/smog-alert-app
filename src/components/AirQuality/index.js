@@ -11,7 +11,7 @@ import {
   Tabs
 } from "native-base";
 
-class Info extends React.Component {
+class AirQuality extends React.Component {
   static getMeasurementsByParameter(measurements, parameter) {
     return R.filter(R.propEq("parameter", parameter), measurements);
   }
@@ -31,9 +31,9 @@ class Info extends React.Component {
     const { measurements, parameters } = this.props;
 
     let measure;
-    measure = Info.getMeasurementsForLocation(measurements, location);
-    measure = Info.getMeasurementsByParameter(measure, parameter.id);
-    measure = Info.processMeasurements(measure);
+    measure = AirQuality.getMeasurementsForLocation(measurements, location);
+    measure = AirQuality.getMeasurementsByParameter(measure, parameter.id);
+    measure = AirQuality.processMeasurements(measure);
     measure = { ...parameter, data: measure };
 
     if (measure.data.length === 0) {
@@ -97,4 +97,4 @@ class Info extends React.Component {
   }
 }
 
-export default Info;
+export default AirQuality;
