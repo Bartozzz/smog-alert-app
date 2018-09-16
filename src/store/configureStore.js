@@ -5,28 +5,31 @@ import { firebaseMiddleware } from "./configureFirebase";
 import rootReducer from "../reducers";
 import rootSagas from "../sagas";
 
-const sagaMiddleware = createSagaMiddleware();
-
-const createStoreWithFirebase = compose(
-  firebaseMiddleware,
-  applyMiddleware(sagaMiddleware),
-  applyMiddleware(reduxLoggerMiddleware)
-)(createStore);
-
 function configureStore(initialState) {
-  const store = createStoreWithFirebase(rootReducer, initialState);
+  const middlewares = [];
+  const sagaMiddleware = createSagaMiddleware();
 
-  // Explicitly reload store
+  middlewares.push(firebaseMiddleware);
+  middlewares.push(applyMiddleware(sagaMiddleware));
+
+  if (process.env.NODE_ENV === "development") {
+    middlewares.push(applyMiddleware(reduxLoggerMiddleware));
+  }
+
+  const enhancer = compose(...middlewares);
+  const store = createStore(rootReducer, initialState, enhancer);
+
+  // Run the saga:
+  sagaMiddleware.run(rootSagas);
+
+  // Explicitly reloads store. Enables Webpack hot module replacement.
   // @see   https://github.com/reduxjs/react-redux/releases/tag/v2.0.0
   if (module.hot) {
-    // Enable Webpack hot module replacement for reducers
     module.hot.accept("../reducers", () => {
       const nextRootReducer = require("../reducers/index");
       store.replaceReducer(nextRootReducer);
     });
   }
-
-  sagaMiddleware.run(rootSagas);
 
   return store;
 }
