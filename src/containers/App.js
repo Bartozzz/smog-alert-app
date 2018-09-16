@@ -81,7 +81,7 @@ class App extends React.Component {
       });
     }
 
-    return fonts.map(font => Font.loadAsync(font));
+    return fonts.map(Font.loadAsync);
   }
 
   /**
