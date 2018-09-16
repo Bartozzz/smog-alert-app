@@ -13,11 +13,11 @@ import {
 
 class Info extends React.Component {
   static getMeasurementsByParameter(measurements, parameter) {
-    return R.filter(a => R.equals(a.parameter, parameter), measurements);
+    return R.filter(R.propEq("parameter", parameter), measurements);
   }
 
   static getMeasurementsForLocation(measurements, location) {
-    return R.filter(a => R.equals(a.city, location.city), measurements);
+    return R.filter(a => R.eqProps("city", a, location), measurements);
   }
 
   static processMeasurements(measurements) {
