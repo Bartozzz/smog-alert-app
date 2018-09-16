@@ -1,10 +1,6 @@
+export const { sin, cos, sqrt, atan2 } = Math;
 export const EARTH_RADIUS_M = 6371e3;
 export const EARTH_RADIUS_KM = 6371;
-
-export const sin = Math.sin;
-export const cos = Math.cos;
-export const sqrt = Math.sqrt;
-export const atan2 = Math.atan2;
 
 /**
  * Converts numeric degrees to radians.
