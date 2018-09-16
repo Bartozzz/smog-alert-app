@@ -22,32 +22,27 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    const { dispatch } = this.props;
-
     // Fetch basic data:
-    // dispatch(requestSources());
-    // dispatch(requestCountries());
-    dispatch(requestParameters());
+    // this.props.requestSources();
+    // this.props.requestCountries();
+    this.props.requestParameters();
 
     // Fetch nearest locations:
     this.fetchNearestLocations();
   }
 
   fetchNearestLocations = async () => {
-    const { dispatch } = this.props;
     const { status } = await Permissions.askAsync(Permissions.LOCATION);
 
     if (status === "granted") {
       const { coords } = await Location.getCurrentPositionAsync();
 
-      dispatch(
-        requestLocations({
-          limit: 5,
-          radius: 500000,
-          order_by: "distance",
-          coordinates: `${coords.latitude},${coords.longitude}`
-        })
-      );
+      this.props.requestLocations({
+        limit: 5,
+        radius: 500000,
+        order_by: "distance",
+        coordinates: `${coords.latitude},${coords.longitude}`
+      });
     }
   };
 
@@ -86,7 +81,7 @@ class App extends React.Component {
       });
     }
 
-    return fonts.map(font => Font.loadAsync(font));
+    return fonts.map(Font.loadAsync);
   }
 
   /**
@@ -127,4 +122,9 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect()(App);
+export default connect(null, {
+  requestCountries,
+  requestLocations,
+  requestParameters,
+  requestSources
+})(App);

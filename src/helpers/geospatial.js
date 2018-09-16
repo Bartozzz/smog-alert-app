@@ -1,10 +1,25 @@
+import * as R from "ramda";
+
+// Utils:
+const { sin, cos, sqrt, atan2 } = Math;
+const notPropEq = R.complement(R.propEq);
+
 export const EARTH_RADIUS_M = 6371e3;
 export const EARTH_RADIUS_KM = 6371;
 
-export const sin = Math.sin;
-export const cos = Math.cos;
-export const sqrt = Math.sqrt;
-export const atan2 = Math.atan2;
+/**
+ * Checks if a marker has valid coordinates.
+ *
+ * @param   {Object}  m   Marker
+ * @return  {boolean}
+ */
+export const hasValidCoords = R.allPass([
+  R.is(Object),
+  R.has("latitude"),
+  R.has("longitude"),
+  notPropEq("latitude", 0),
+  notPropEq("longitude", 0)
+]);
 
 /**
  * Converts numeric degrees to radians.

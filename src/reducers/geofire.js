@@ -31,10 +31,12 @@ export const geofireReducer = (state = initialState, action) => {
 
     case MARKERS_ADD_SINGLE:
       // Assuming we are adding single markers from Geofire:
-      const marker = R.evolve({
-        id: R.defaultTo(action.key),
-        location: R.zipObj(["latitude", "longitude"])
-      })(action.data);
+      const marker = R.pipe(
+        // Normalize location:
+        R.evolve({ location: R.zipObj(["latitude", "longitude"]) }),
+        // Use action key as default id:
+        R.over(R.lensProp("id"), R.defaultTo(action.key))
+      )(action.data);
 
       return R.evolve(R.__, state)({
         markers: R.assoc(action.key, marker)
@@ -47,11 +49,13 @@ export const geofireReducer = (state = initialState, action) => {
         coordinates: "location"
       });
 
-      let markers = R.filter(R.has("coordinates"), action.bulk);
-      // Normalize each marker keys:
-      markers = R.map(R.pipe(normalizeKeys), markers);
-      // Transform array to object by id:
-      markers = R.indexBy(R.prop("id"), markers);
+      const markers = R.pipe(
+        R.filter(R.has("coordinates")),
+        // Normalize each marker keys:
+        R.map(normalizeKeys),
+        // Transform array to object by id:
+        R.indexBy(R.prop("id"))
+      )(action.bulk);
 
       return R.evolve(R.__, state)({
         markers: R.merge(markers)
