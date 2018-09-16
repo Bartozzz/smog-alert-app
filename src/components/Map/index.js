@@ -28,7 +28,7 @@ class Map extends React.PureComponent {
 
     // If center is provided, center the map on given coordinates. Center has
     // more importance than markers, as it is used to force center:
-    if (R.allPass(R.hasIn("latitude"), R.hasIn("longitude"))(center)) {
+    if (R.allPass([R.has("latitude"), R.has("longitude")])(center)) {
       this.map.current.fitToCoordinates([center], {
         animated: animated || false
       });
