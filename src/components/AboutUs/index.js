@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Content, Card, CardItem, Text } from "native-base";
 
-const About = () => (
+const AboutUs = () => (
   <Content padder>
     <Card>
       <CardItem header bordered>
@@ -41,4 +41,4 @@ const About = () => (
   </Content>
 );
 
-export default About;
+export default AboutUs;
