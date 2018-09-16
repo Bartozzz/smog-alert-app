@@ -1,7 +1,9 @@
 import * as React from "react";
+import * as R from "ramda";
 import { Field, reduxForm } from "redux-form";
 import { Image } from "react-native";
 import { Content, Card, CardItem, Button, Text } from "native-base";
+import { hasValidCoords } from "../../helpers/geospatial";
 import Map from "../Map";
 import Input from "../Input";
 import CameraRoll from "../CameraRoll";
@@ -13,17 +15,13 @@ const Polluter = ({
   marker,
   invalid
 }) => {
-  let markers = [];
-  let disabled = invalid;
-
-  if (marker.latitude !== 0 && marker.longitude !== 0) {
-    markers.push({
+  const isValid = R.always(hasValidCoords(marker));
+  const markers = R.when(isValid)(
+    R.append({
       id: `Marker-${Date.now()}`,
-      coordinate: marker
-    });
-  } else {
-    disabled = true;
-  }
+      location: marker
+    })
+  )([]);
 
   return (
     <Content padder>
@@ -101,7 +99,7 @@ const Polluter = ({
         block
         style={{ marginTop: 10, marginBottom: 20 }}
         onPress={handleSubmit}
-        disabled={disabled}
+        disabled={hasValidCoords(marker) ? invalid : true}
       >
         <Text>Save</Text>
       </Button>
