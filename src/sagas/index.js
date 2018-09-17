@@ -8,11 +8,18 @@ import { parametersSaga } from "./parameters";
 import { positionSaga } from "./position";
 import { sourcesSaga } from "./sources";
 
-export default function* sagas() {
+/**
+ * `getFirebase` is a function populated from the store which gives direct
+ * access to a Firebase instance.
+ *
+ * @see     http://react-redux-firebase.com/docs/integrations/redux-saga.html
+ * @param   {Firebase}  getFirebase
+ */
+export default function* sagas(getFirebase) {
   yield all([
     citiesSaga(),
     countriesSaga(),
-    geofireSaga(),
+    geofireSaga(getFirebase),
     locationsSaga(),
     measurementsSaga(),
     parametersSaga(),

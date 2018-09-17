@@ -1,8 +1,6 @@
 import * as R from "ramda";
 import * as React from "react";
-import { compose } from "redux";
 import { connect } from "react-redux";
-import { firebaseConnect } from "react-redux-firebase";
 import { Ionicons } from "@expo/vector-icons";
 import Polluters from "../../components/Polluters";
 import { hav } from "../../helpers/geospatial";
@@ -41,11 +39,9 @@ class PollutersContainer extends React.Component {
     // It forces map to center on the added polluter (success fallback):
     const center = navigation.getParam("center");
 
-    const points = R.values(markers);
-
     return (
       <Polluters
-        markers={points}
+        markers={R.values(markers)}
         center={center}
         onRegionChange={this.onRegionChange}
       />
@@ -62,7 +58,4 @@ const mapDispatchToProps = dispatch => ({
     dispatch(geofireUpdateCriteria(center, radius))
 });
 
-export default compose(
-  firebaseConnect(),
-  connect(mapStateToProps, mapDispatchToProps)
-)(PollutersContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(PollutersContainer);
