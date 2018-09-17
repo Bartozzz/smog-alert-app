@@ -1,12 +1,15 @@
 import * as React from "react";
 import * as R from "ramda";
 import { MapView } from "expo";
-import { StyleSheet } from "react-native";
+import { Text, Thumbnail } from "native-base";
+import { View, StyleSheet } from "react-native";
 
 /**
- * Renders a native map with provided markers and default styles.
+ * Renders a native map with provided markers, callouts and default styles.
+ * Automatically handles forced map centering (when providing new `center`
+ * property) and centering on `markers` (on initial render).
  *
- * @extends  React.Component
+ * @extends  React.PureComponent
  */
 class Map extends React.PureComponent {
   map = React.createRef();
@@ -26,8 +29,8 @@ class Map extends React.PureComponent {
   centerMapOnCoords() {
     const { center, animated } = this.props;
 
-    // If center is provided, center the map on given coordinates. Center has
-    // more importance than markers, as it is used to force center:
+    // If center is provided, center the map on given coordinates. Note that
+    // `centerMapOnCoords` has more importance than `centerMapOnMarkers`:
     if (R.allPass([R.has("latitude"), R.has("longitude")])(center)) {
       this.map.current.fitToCoordinates([center], {
         animated: animated || false
@@ -47,6 +50,49 @@ class Map extends React.PureComponent {
 
       this.map.current.fitToSuppliedMarkers(identifiers, animated || false);
     }
+  }
+
+  renderCallout(marker) {
+    if (!marker.title || !marker.description || !marker.photo) {
+      return null;
+    }
+
+    return (
+      <MapView.Callout
+        style={{
+          maxWidth: 160,
+          maxHeight: 330
+        }}
+      >
+        <View>
+          {marker.photo && (
+            <Thumbnail
+              square
+              large
+              source={{ uri: marker.photo }}
+              style={{ alignSelf: "center" }}
+            />
+          )}
+
+          {marker.title && (
+            <Text
+              style={{
+                fontWeight: "700",
+                marginTop: 5,
+                marginBottom: 5,
+                textAlign: "center"
+              }}
+            >
+              {marker.title}
+            </Text>
+          )}
+
+          {marker.description && (
+            <Text style={{ fontWeight: "400" }}>{marker.description}</Text>
+          )}
+        </View>
+      </MapView.Callout>
+    );
   }
 
   render() {
@@ -69,7 +115,9 @@ class Map extends React.PureComponent {
               key={marker.id}
               coordinate={marker.location}
               identifier={String(marker.id)}
-            />
+            >
+              {this.renderCallout(marker)}
+            </MapView.Marker>
           ))}
       </MapView>
     );
