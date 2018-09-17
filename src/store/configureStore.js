@@ -1,6 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
 import reduxLoggerMiddleware from "redux-logger";
+import { getFirebase } from "react-redux-firebase";
 import { firebaseMiddleware } from "./configureFirebase";
 import rootReducer from "../reducers";
 import rootSagas from "../sagas";
@@ -19,8 +20,8 @@ function configureStore(initialState) {
   const enhancer = compose(...middlewares);
   const store = createStore(rootReducer, initialState, enhancer);
 
-  // Run the saga:
-  sagaMiddleware.run(rootSagas);
+  // Run the saga and pass getFirebase for further usage:
+  sagaMiddleware.run(rootSagas, getFirebase);
 
   // Explicitly reloads store. Enables Webpack hot module replacement.
   // @see   https://github.com/reduxjs/react-redux/releases/tag/v2.0.0

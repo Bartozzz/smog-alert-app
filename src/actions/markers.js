@@ -14,10 +14,10 @@ export const MARKER_MEASUREMENT = "MARKER_MEASUREMENT";
  * @param   {Object}  data
  * @param   {string?} data.id           If no `id` provided – `key` will be used
  * @param   {string}  data.type         Marker's type (polluter, measurement, …)
- * @param   {string?} data.name         Marker's name
+ * @param   {string?} data.title        Marker's title
  * @param   {string?} data.photo        Marker's photo
  * @param   {string?} data.description  Marker's description
- * @param   {number?} data.distance     Distance from rom user's location
+ * @param   {number?} data.distance     Distance from user's location
  * @param   {Array}   data.location     Location in format: [lat, lng]
  */
 export const addMarker = (key, data) => ({
