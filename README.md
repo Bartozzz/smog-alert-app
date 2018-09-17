@@ -11,9 +11,9 @@ We’ve created this application, because we believe that nobody should be allow
 
 <br>
 
-<img src="https://i.imgur.com/22auMwV.png" width="250"/>
+<img src="https://i.imgur.com/YyRmbqH.png" width="250"/>
 <img src="https://i.imgur.com/1FbvKkQ.png" width="250"/>
-<img src="https://i.imgur.com/jB15dVK.png" width="250"/>
+<img src="https://i.imgur.com/1rgz7DU.png" width="250"/>
 </div>
 
 > **Note:** This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app). Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
