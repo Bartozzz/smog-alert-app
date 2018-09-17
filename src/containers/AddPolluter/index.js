@@ -15,14 +15,32 @@ class AddPolluterContainer extends React.Component {
     const { firebase, image, coordinate, navigation, resetMarker } = this.props;
 
     try {
+      const photoData = await fetch(image.uri);
+      const photoBlob = await photoData.blob();
+      let photoDownloadUrl = null;
+
       const database = firebase.database();
       const polluter = database.ref("polluter").push();
 
+      if (image.uri) {
+        // NOTE: sometimes it fails with response "Entity too large". Not sure
+        //       ATM if it is a limitation of React Native, device API or
+        //       Firebase.
+        const photo = await firebase.uploadFile("proofs", photoBlob, null, {
+          name: polluter.key
+        });
+
+        photoDownloadUrl = await photo.uploadTaskSnapshot.ref.getDownloadURL();
+      }
+
       await polluter.set({
         title: values.title,
+        photo: photoDownloadUrl,
         description: values.description
       });
 
+      // NOTE: GeoFire's marker & polluter record must share the same key/id in
+      //       order to retrieve complete data later.
       await geoFire.set(polluter.key, [
         coordinate.latitude,
         coordinate.longitude
@@ -31,11 +49,12 @@ class AddPolluterContainer extends React.Component {
       navigation.navigate("Polluters", {
         center: coordinate
       });
-
-      resetMarker();
     } catch (error) {
+      // TODO(Bartozzz): proper error handling:
       console.log("Error", error);
     }
+
+    resetMarker();
   };
 
   render() {
@@ -60,7 +79,10 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onProofSelect: image => dispatch(polluterAddProof(image)),
   onMarkerSelect: coords => dispatch(polluterAddMarker(coords)),
-  resetMarker: () => dispatch(polluterAddMarker({ latitude: 0, longitude: 0 }))
+  resetMarker: () => {
+    dispatch(polluterAddProof({}));
+    dispatch(polluterAddMarker({ latitude: 0, longitude: 0 }));
+  }
 });
 
 export default compose(

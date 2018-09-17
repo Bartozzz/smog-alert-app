@@ -2,13 +2,7 @@ import * as R from "ramda";
 import { POLLUTER_ADD_PROOF, POLLUTER_ADD_MARKER } from "../actions/polluter";
 
 const initialState = {
-  image: {
-    cancelled: false,
-    type: "image",
-    uri: "",
-    width: 0,
-    height: 0
-  },
+  image: {},
   coordinate: {
     latitude: 0,
     longitude: 0
